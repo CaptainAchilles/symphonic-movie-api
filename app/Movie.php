@@ -29,6 +29,6 @@ class Movie extends Model
      */
     public function actors()
     {
-        return $this->hasMany('ActorsInMovie');
+        return $this->hasMany(\App\ActorsInMovie::class);
     }
 }

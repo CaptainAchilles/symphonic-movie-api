@@ -46,11 +46,13 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-                'node' => \Folklore\GraphQL\Relay\NodeQuery::class
+                'genre' => \App\GraphQL\Query\GenreQuery::class,
+                'actors' => \App\GraphQL\Query\ActorQuery::class,
+                //'movie' => \App\GraphQL\Query\MovieQuery::class
             ],
-//            'mutation' => [
+            'mutation' => [
 
- //           ]
+            ]
         ]
     ],
 
@@ -70,9 +72,10 @@ return [
     // ]
     //
     'types' => [
-        'User' => \App\GraphQL\Type\UserNode::class,
-        'Photo' => \App\GraphQL\Type\PhotoNode::class,
-        'PhotosConnection' => \App\GraphQL\Type\PhotosConnection::class,
+        \App\GraphQL\Type\GenreType::class,
+        \App\GraphQL\Type\MovieType::class,
+        \App\GraphQL\Type\ActorType::class,
+        \App\GraphQL\Type\ActorCharacterType::class,
     ],
 
     // The prefix for routes. You can remove it by setting it to null.
@@ -149,21 +152,17 @@ return [
         // Define the schemas on which you would like to use relay. It will
         // automatically add the node query defined below to those schemas.
         // The parameter can be a string, an array of names or "*" for all schemas.
-        'schemas' => null,
+        'schemas' => 'default',
 
         // The Query class used for the node query
         'query' => [
-            'node' => \Folklore\GraphQL\Relay\NodeQuery::class,
-            'User' => \App\GraphQL\Type\UsersQuery::class,
+            'node' => \Folklore\GraphQL\Relay\NodeQuery::class
         ],
 
         // The Type classes used for the Node interface and the PageInfo
         'types' => [
             'Node' => \Folklore\GraphQL\Relay\NodeInterface::class,
-            'PageInfo' => \Folklore\GraphQL\Relay\PageInfoType::class,
-            'User' => \App\GraphQL\Type\UserNode::class,
-            'Photo' => \App\GraphQL\Type\PhotoNode::class,
-            'PhotosConnection' => \App\GraphQL\Type\PhotosConnection::class,
+            'PageInfo' => \Folklore\GraphQL\Relay\PageInfoType::class
         ]
     ],
 

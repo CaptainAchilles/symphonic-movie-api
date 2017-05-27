@@ -21,14 +21,16 @@ class Genre extends Model
      */
     public function movies()
     {
-        return $this->belongsTo('Movie');
+        return $this->hasMany(\App\MoviesInGenre::class);
     }
 
     /**
-     * Get the actors associated with this movie.
+     * Get the actors associated with the movie.
      */
-    public function genres()
+    public function actors()
     {
-        return $this->belongsTo('Genre');
+        return $this->hasMany(\App\MoviesInGenre::class);
     }
+
+
 }

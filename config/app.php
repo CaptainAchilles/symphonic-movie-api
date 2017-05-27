@@ -176,12 +176,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
-        /*
-        *
-        */
         Folklore\GraphQL\ServiceProvider::class,
-        Folklore\GraphQL\Relay\ServiceProvider::class,
+        //Folklore\GraphQL\Relay\ServiceProvider::class,
     ],
 
     /*
@@ -197,7 +193,7 @@ return [
 
     'aliases' => [
         'GraphQL' => Folklore\GraphQL\Support\Facades\GraphQL::class,
-        'Relay' => Folklore\GraphQL\Relay\Support\Facades\Relay::class,
+        //'Relay' => Folklore\GraphQL\Relay\Support\Facades\Relay::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,

@@ -51,13 +51,11 @@ $factory->define(\App\Genre::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(\App\Movie::class, function (Faker\Generator $faker) {
-    $genreCount = \App\Genre::where("id", ">", "0")->get(["id"]);
     return [
         'name' => $faker->safeColorName,
         'rating' => $faker->numberBetween(0, 10),
         'description' => $faker->realText(200),
-        'image' => getImage($faker),
-        'genre_id' => $genreCount->random()
+        'image' => getImage($faker)
     ];
 });
 
