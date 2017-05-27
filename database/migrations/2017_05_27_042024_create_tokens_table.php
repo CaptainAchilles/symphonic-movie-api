@@ -17,7 +17,7 @@ class CreateTokensTable extends Migration
             $table->increments('id')->unique();
             $table->integer('user_id')->unsigned();
             $table->string('token');
-            $table->dateTime('created_at');
+            $table->timestamps();
             $table->softDeletes();
         });
 

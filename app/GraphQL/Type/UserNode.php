@@ -30,13 +30,25 @@ class UserNode extends BaseNodeType
                     return $root->id;
                 }
             ],
+            /*'photos' => [
+                'type' => GraphQL::type('PhotosConnection'),
+                'description' => 'The photos of the user'
+            ],*/
+            'name' => [
+                'type' => Type::string(),
+                'description' => "The name of the user"
+            ],
             'email' => [
                 'type' => Type::string(),
                 'description' => 'The email field'
             ],
-            'photos' => [
-                'type' => GraphQL::type('PhotosConnection'),
-                'description' => 'The photos of the user'
+            'password' => [
+                'type' => Type::string(),
+                'description' => "The password of the user"
+            ],
+            'remember_token' => [
+                'type' => Type::string(),
+                'description' => "A token to authenticate the user with"
             ]
         ];
     }
