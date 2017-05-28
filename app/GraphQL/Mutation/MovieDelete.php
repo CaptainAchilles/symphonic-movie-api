@@ -19,7 +19,7 @@ class MovieDelete extends Mutation {
 	public function args()
 	{
 		return [
-			'id' => ['name' => 'id', 'type' => Type::nonNull(Type::string())]
+			'id' => ['name' => 'id', 'type' => Type::nonNull(Type::id())]
 		];
 	}
 

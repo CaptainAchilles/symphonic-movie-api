@@ -22,7 +22,7 @@ class GenreMutation extends Mutation {
 	public function args()
 	{
 		return [
-			'id' => ['name' => 'id', 'type' => Type::string()],
+			'id' => ['name' => 'id', 'type' => Type::id()],
 			'name' => ['name' => 'name', 'type' => Type::string()],
 
             'movies' => ['name' => 'movies', 'type' => Type::listOf(Type::id())],

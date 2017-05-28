@@ -22,7 +22,7 @@ class ActorMutation extends Mutation {
 	public function args()
 	{
 		return [
-			'id' => ['name' => 'id', 'type' => Type::string()],
+			'id' => ['name' => 'id', 'type' => Type::id()],
 			'name' => ['name' => 'name', 'type' => Type::string()],
 			'birth_date' => ['name' => 'birth_date', 'type' => Type::string()],
 			'bio' => ['name' => 'bio', 'type' => Type::string()],
