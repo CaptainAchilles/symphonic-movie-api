@@ -19,9 +19,9 @@ After cloning this respository:
 
 # Current Features
 
-* Provides a User / Password based authentication which works with a cookie, and also returns a unique token associated with that user account (See #1)
+* Provides a User / Password based authentication which works with a cookie, and also returns a unique token associated with that user account (See [#1](https://github.com/CaptainAchilles/symphonic-movie-api/issues/1))
 * The web API is restricted unless it validates an api key found in the request body
-* Provides Queries and Mutations for the main data types of the database (`Actor`, `Genre`, `Movie`). It is not yet full-featured, but it does work. See (#2)
+* Provides Queries and Mutations for the main data types of the database (`Actor`, `Genre`, `Movie`). It is not yet full-featured, but it does work. See ([#2])https://github.com/CaptainAchilles/symphonic-movie-api/issues/2))
 
 # Future Work
 * Finish implementing Unit tests
