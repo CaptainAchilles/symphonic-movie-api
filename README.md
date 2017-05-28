@@ -8,6 +8,8 @@ After cloning this respository:
  * Run  `composer install` to get started. This will bootstrap your enviroment and install the project dependencies.
  * Set up your database information in `.env`
  * Create a database corresponding to the one in your `.env`
+ * Run `php artisan key:generate`
+ * Run `php artisan config:clear`
  * Run `php artisan migrate` to create the schemas
  * Run `php artisan db:seed` to seed the database. All seeded user accounts have the same password of 'secret'
  * Run `php artisan serve` to serve the application on localhost:8000
