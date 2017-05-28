@@ -6,11 +6,11 @@ use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Type as BaseType;
 use GraphQL;
 
-class GenreType extends BaseType
+class GenreUpdateType extends BaseType
 {
     protected $attributes = [
-        'name' => 'GenreType',
-        'description' => 'A type'
+        'name' => 'GenreUpdateType',
+        'description' => 'A type used when mutating genres'
     ];
 
     public function fields()

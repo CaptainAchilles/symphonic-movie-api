@@ -14,12 +14,12 @@ class GenreQuery extends BaseQuery
         'description' => 'A query'
     ];
 
-    protected function type()
+    public function type()
     {
         return Type::listOf(GraphQL::type('GenreType'));
     }
 
-    protected function args()
+    public function args()
     {
         return [
             'id' => [

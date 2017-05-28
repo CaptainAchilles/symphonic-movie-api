@@ -46,12 +46,18 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-                'genre' => \App\GraphQL\Query\GenreQuery::class,
+                'genres' => \App\GraphQL\Query\GenreQuery::class,
                 'actors' => \App\GraphQL\Query\ActorQuery::class,
-                //'movie' => \App\GraphQL\Query\MovieQuery::class
+                'movies' => \App\GraphQL\Query\MovieQuery::class
             ],
             'mutation' => [
+                'ActorMutation' => App\GraphQL\Mutation\ActorMutation::class,
+                'GenreMutation' => App\GraphQL\Mutation\GenreMutation::class,
+                'MovieMution' => App\GraphQL\Mutation\MovieMutation::class,
 
+                'ActorDelete' => App\GraphQL\Mutation\ActorDelete::class,
+                'GenreDelete' => App\GraphQL\Mutation\GenreDelete::class,
+                'MovieDelete' => App\GraphQL\Mutation\MovieDelete::class
             ]
         ]
     ],
@@ -76,6 +82,8 @@ return [
         \App\GraphQL\Type\MovieType::class,
         \App\GraphQL\Type\ActorType::class,
         \App\GraphQL\Type\ActorCharacterType::class,
+
+        \App\GraphQL\Type\ActorMovieRole::class,
     ],
 
     // The prefix for routes. You can remove it by setting it to null.
@@ -121,7 +129,9 @@ return [
     'request_variables_name' => 'variables',
 
     // Any middleware for the graphql routes group
-    'middleware' => [],
+    'middleware' => [
+        //"auth:api"
+    ],
 
     // This callable will received every Error objects for each errors GraphQL catch.
     // The method should return an array representing the error.

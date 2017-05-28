@@ -19,9 +19,9 @@ class Movie extends Model
     /**
      * Get the genres associated with the movie.
      */
-    public function genre()
+    public function genres()
     {
-        return $this->hasMany('Genre');
+        return $this->hasMany(\App\MoviesInGenre::class);
     }
 
     /**

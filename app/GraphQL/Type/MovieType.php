@@ -13,7 +13,7 @@ class MovieType extends BaseType
         'description' => 'A type'
     ];
 
-    protected function fields()
+    public function fields()
     {
         return [
             'id' => [
@@ -36,14 +36,14 @@ class MovieType extends BaseType
                 'type' => Type::string(),
                 'description' => 'An image of the movie box art'
             ],
-            'genre' => [
+            'genres' => [
                 'type' => Type::listOf(GraphQL::type('GenreType')),
                 'description' => 'A list of genres this movie belongs to'
             ],
             'actors' => [
                 'type' => Type::listOf(GraphQL::type('ActorType')),
-                'description' => 'Actors in this movie'
-            ]
+                'description' => 'A list of actors in this movie'
+            ],
         ];
     }
     public function resolveActorsField($root, $args, $context, GraphQL\Type\Definition\ResolveInfo $info)
@@ -51,6 +51,17 @@ class MovieType extends BaseType
         return $root->actors()->get()
             ->flatMap(function($movieLookup) {
                 return $movieLookup->actors()->get();
+            })->filter(function($node) use ($args) {
+                return isset($args["id"]) ? $node->id == $args["id"] : true;
+            });
+    }
+    public function resolveGenresField($root, $args, $context, GraphQL\Type\Definition\ResolveInfo $info)
+    {
+        return $root->genres()->get()
+            ->flatMap(function($movieLookup) {
+                return $movieLookup->genres()->get();
+            })->filter(function($node) use ($args) {
+                return isset($args["id"]) ? $node->id == $args["id"] : true;
             });
     }
 }

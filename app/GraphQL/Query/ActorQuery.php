@@ -7,6 +7,7 @@ use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use GraphQL;
 
+
 class ActorQuery extends BaseQuery
 {
     protected $attributes = [
@@ -14,12 +15,12 @@ class ActorQuery extends BaseQuery
         'description' => 'A query for actors'
     ];
 
-    protected function type()
+    public function type()
     {
         return Type::listOf(GraphQL::type('ActorType'));
     }
 
-    protected function args()
+    public function args()
     {
         return [
             'id' => [
@@ -33,19 +34,19 @@ class ActorQuery extends BaseQuery
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
         if (!empty($args["id"])) {
-            $genres = \App\Actor::where("id", $args["id"]);
+            $actors = \App\Actor::where("id", $args["id"]);
         } else {
-            $genres = \App\Actor::query();
+            $actors = \App\Actor::query();
         }
         $fields = $info->getFieldSelection($depth = 3);
 		foreach ($fields as $field => $keys) {
 			if ($field === 'movies') {
-				$genres->with('movies.movies');
+				$actors->with('movies.movies');
 			} else if ($field === 'actors') {
-				$genres->with('movies.movies');
+				$actors->with('movies.movies');
 			}
 		}
 
-        return $genres->get();
+        return $actors->get();
     }
 }

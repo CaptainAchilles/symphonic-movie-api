@@ -11,23 +11,41 @@ class MovieQuery extends BaseQuery
 {
     protected $attributes = [
         'name' => 'MovieQuery',
-        'description' => 'A query'
+        'description' => 'A query which gets movies'
     ];
 
-    protected function type()
+    public function type()
     {
-        return Type::listOf(Type::string());
+        return Type::listOf(GraphQL::type('MovieType'));
     }
 
-    protected function args()
+    public function args()
     {
         return [
-            
+            'id' => [
+                'name' => 'id',
+                'type' => Type::id(),
+                'description' => 'The genre id'
+            ]
         ];
     }
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-        return [];
+        if (!empty($args["id"])) {
+            $movies = \App\Movie::where("id", $args["id"]);
+        } else {
+            $movies = \App\Movie::query();
+        }
+        $fields = $info->getFieldSelection($depth = 3);
+		foreach ($fields as $field => $keys) {
+			if ($field === 'genres') {
+				$movies->with('genres');
+			} else if ($field === 'actors') {
+				$movies->with('actors');
+			}
+		}
+
+        return $movies->get();
     }
 }

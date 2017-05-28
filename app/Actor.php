@@ -24,12 +24,4 @@ class Actor extends Model
         return $this->hasMany(\App\ActorsInMovie::class);
 
     }
-
-    /**
-     * Get the actors associated with this movie.
-     */
-    public function genres()
-    {
-        //return $this->hasMany('ActorsInMovie')->hasMany("Movie");
-    }
 }

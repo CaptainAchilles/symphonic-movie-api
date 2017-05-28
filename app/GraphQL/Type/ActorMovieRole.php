@@ -6,13 +6,13 @@ use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Type as BaseType;
 use GraphQL;
 
-
-class ActorCharacterType extends BaseType
+class ActorMovieRole extends BaseType
 {
     protected $attributes = [
-        'name' => 'ActorCharacterType',
-        'description' => 'A type describing an actor with a character'
+        'name' => 'ActorMovieRole',
+        'description' => 'A type'
     ];
+    protected $inputObject = true;
 
     public function fields()
     {
@@ -23,9 +23,8 @@ class ActorCharacterType extends BaseType
             ],
             'name' => [
                 'type' => Type::string(),
-                'description' => 'The name of the character'
+                'description' => 'The name of the character in this movie'
             ]
         ];
     }
-
 }
