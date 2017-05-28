@@ -16,6 +16,7 @@ After cloning this respository:
  * Create a user account from `localhost:8000/register`
  * Visit `localhost:8000/home` to get your api key
  * Visit `localhost:8000/graphiql` to interact with the graphQL schema and view its structure
+ * PHPUnit has been set up for this project, but meaningful tests have not been written. You can run them by invoking `phpunit` in the root directory
 
 # Current Features
 
