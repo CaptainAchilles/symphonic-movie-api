@@ -5,15 +5,16 @@ __This is my first project in Laravel, please file issues if you discover proble
 
 # Getting Started
 After cloning this respository:
-    1. Run  `composer install` to get started. This will bootstrap your enviroment and install the project dependencies.
-    2. Set up your database information in `.env`
-    3. Create a database corresponding to the one in your `.env`
-    4. Run `php artisan migrate` to create the schemas
-    5. Run `php artisan db:seed` to seed the database. All seeded user accounts have the same password of 'secret'
-    6. Run `php artisan serve` to serve the application on localhost:8000
-    7. Create a user account from `localhost:8000/register`
-    8. Visit `localhost:8000/home` to get your api key
-    9. Visit `localhost:8000/graphiql` to interact with the graphQL schema and view its structure
+
+    * Run  `composer install` to get started. This will bootstrap your enviroment and install the project dependencies.
+    * Set up your database information in `.env`
+    * Create a database corresponding to the one in your `.env`
+    * Run `php artisan migrate` to create the schemas
+    * Run `php artisan db:seed` to seed the database. All seeded user accounts have the same password of 'secret'
+    * Run `php artisan serve` to serve the application on localhost:8000
+    * Create a user account from `localhost:8000/register`
+    * Visit `localhost:8000/home` to get your api key
+    * Visit `localhost:8000/graphiql` to interact with the graphQL schema and view its structure
 
 # Current Features
 
