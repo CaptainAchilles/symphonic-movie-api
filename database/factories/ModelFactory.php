@@ -14,7 +14,7 @@ function getImage(Faker\Generator $faker) {
     $filePath = sys_get_temp_dir();
     $imagePath = $faker->image($filePath, 320, 320, false);
     $imageHandle = fopen($imagePath, "rb");
-    return fread($imageHandle, filesize($imagePath));
+    return base64_encode(fread($imageHandle, filesize($imagePath)));
 }
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(\App\User::class, function (Faker\Generator $faker) {

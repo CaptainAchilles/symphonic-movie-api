@@ -9,6 +9,10 @@
 
                 <div class="panel-body">
                     You are logged in!
+                    <p>
+                    Your API token is:
+                    <pre>{{ Auth::user()->api_token }}</pre>
+                    </p>
                 </div>
             </div>
         </div>

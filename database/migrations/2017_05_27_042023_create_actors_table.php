@@ -19,7 +19,7 @@ class CreateActorsTable extends Migration
             $table->date('birth_date');
             $table->integer('age');
             $table->text('bio');
-            $table->binary('image');
+            $table->text('image');
 
             $table->timestamps();
         });

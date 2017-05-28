@@ -130,7 +130,7 @@ return [
 
     // Any middleware for the graphql routes group
     'middleware' => [
-        //"auth:api"
+        "auth:api"
     ],
 
     // This callable will received every Error objects for each errors GraphQL catch.
@@ -178,12 +178,14 @@ return [
 
     // Config for GraphiQL (https://github.com/graphql/graphiql).
     // To disable GraphiQL, set this to null.
-    'graphiql' => [
+    'graphiql' => null,
+    /*[
+        // Own is defined in ./routes/web.php
         'routes' => '/graphiql',
-        'middleware' => [],
+        'middleware' => ["auth"],
         'view' => 'graphql::graphiql',
         'composer' => \Folklore\GraphQL\View\GraphiQLComposer::class
-    ],
+    ]*/
 
     // Options to limit the query complexity and depth. See the doc
     // @ https://github.com/webonyx/graphql-php#security

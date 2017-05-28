@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/graphiql', function () {
+        return view('graphiql');
+})->middleware("auth");
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
