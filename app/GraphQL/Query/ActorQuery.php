@@ -43,6 +43,7 @@ class ActorQuery extends BaseQuery
 			if ($field === 'movies') {
 				$actors->with('movies.movies');
 			} else if ($field === 'actors') {
+                // Load the movies relation to get the actors from the movies
 				$actors->with('movies.movies');
 			}
 		}

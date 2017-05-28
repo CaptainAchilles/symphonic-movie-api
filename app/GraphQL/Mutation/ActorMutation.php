@@ -58,18 +58,22 @@ class ActorMutation extends Mutation {
 
 		$actor->save();
 		if (isset($args['movies'])) {
+			// Get all existing movies this actor was in
 			$actorMovies = collect($args["movies"])->keyBy("id");
 			$actorMovieIds = $actorMovies->map(function($movie) {
 				return $movie['id'];
 			});
 			$existingMovies = Movie::whereIn("id", $actorMovieIds)->get()->keyBy("id");
 
+			// If the given list of movie IDs doesn't match up with the existing movies then rollback and throw an error
 			foreach($actorMovieIds as $id) {
 				if ($existingMovies->get($id) == null) {
 					$actor->delete();
 					throw new ValidationError("Movie ID does not exist: $id");
 				}
 			}
+
+			// Associate this actor with all the movies they were in
 			foreach ($existingMovies as $key => $value) {
 				$uniquePair = [
 					"movie_id" => $key,

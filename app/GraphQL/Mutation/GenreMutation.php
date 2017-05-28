@@ -51,14 +51,17 @@ class GenreMutation extends Mutation {
 
         $genre->save();
 		if (isset($args['movies'])) {
+			// Get all existing movies this genre is in
 			$existingMovies = Movie::whereIn("id", $args["movies"])->get()->keyBy("id");
 
+			// If the given list of movie IDs doesn't match up with the existing movies then rollback and throw an error
 			foreach($args["movies"] as $id) {
 				if ($existingMovies->get($id) == null) {
 					$genre->delete();
 					throw new ValidationError("Movie ID does not exist: $id");
 				}
 			}
+			// Associate this genre with all the movies it was in
 			foreach ($existingMovies as $key => $value) {
 				$uniquePair = [
 					"movie_id" => $key,
