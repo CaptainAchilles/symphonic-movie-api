@@ -3,6 +3,7 @@
 use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Mutation;
+use Folklore\GraphQL\Error\ValidationError;
 use App\Movie;
 
 class MovieMutation extends Mutation {
@@ -13,7 +14,7 @@ class MovieMutation extends Mutation {
 
 	public function type()
 	{
-		return Type::listOf(GraphQL::type('MovieType'));
+		return GraphQL::type('MovieType');
 	}
 
 	public function args()
@@ -25,8 +26,9 @@ class MovieMutation extends Mutation {
 			'description' => ['name' => 'description', 'type' => Type::string()],
 			'image' => ['name' => 'image', 'type' => Type::string()],
 
-			'actors' => ['name' => 'actors', 'type' => Type::listOf(Type::id())],
-            'genres' => ['name' => 'genres', 'type' => Type::listOf(Type::id())],
+            // Must add movies, then individual separately data at the moment.
+			// 'actors' => ['name' => 'actors', 'type' => Type::listOf(Type::id())],
+            // 'genres' => ['name' => 'genres', 'type' => Type::listOf(Type::id())],
 		];
 	}
 
@@ -41,7 +43,7 @@ class MovieMutation extends Mutation {
 		if(!$movie) {
 			return null;
 		}
-		foreach (["name", "rating", "description", "image"] as $movieProp => $_) {
+		foreach (["name", "rating", "description", "image"] as $movieProp) {
 			if (isset($args[$movieProp])) {
                 $movie->$movieProp = $args[$movieProp];
 			} else if (!isset($args["id"])) {
@@ -49,16 +51,7 @@ class MovieMutation extends Mutation {
 			}
 		}
 
-		// Update related tables
-		if (isset($args['actors'])) {
-			$makeMovies = (new ActorMutation())->resolve($root, $args["actors"]);
-		}
-        if (isset($args['genres'])) {
-			$makeMovies = (new GenreMutation())->resolve($root, $args["genres"]);
-		}
-
         $movie->save();
-
 		return $movie;
 	}
 

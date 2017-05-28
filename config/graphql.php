@@ -53,7 +53,7 @@ return [
             'mutation' => [
                 'ActorMutation' => App\GraphQL\Mutation\ActorMutation::class,
                 'GenreMutation' => App\GraphQL\Mutation\GenreMutation::class,
-                'MovieMution' => App\GraphQL\Mutation\MovieMutation::class,
+                'MovieMutation' => App\GraphQL\Mutation\MovieMutation::class,
 
                 'ActorDelete' => App\GraphQL\Mutation\ActorDelete::class,
                 'GenreDelete' => App\GraphQL\Mutation\GenreDelete::class,
